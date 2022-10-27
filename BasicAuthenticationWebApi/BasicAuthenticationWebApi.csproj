@@ -164,6 +164,7 @@
     <Compile Include="Models\BasicAuthenticationAttribute.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\EmployeeList.cs" />
+    <Compile Include="Models\MyAuthorizeAttribute.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserList.cs" />
     <Compile Include="Models\UserValidate.cs" />

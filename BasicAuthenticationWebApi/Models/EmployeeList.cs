@@ -7,6 +7,7 @@ namespace BasicAuthenticationWebApi.Models
 {
     public class EmployeeList
     {
+        // hard-coded employee list
         public List<Employee> GetEmployees()
         {
             List<Employee> empList = new List<Employee>();

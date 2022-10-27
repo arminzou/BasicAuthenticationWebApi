@@ -16,5 +16,14 @@ namespace BasicAuthenticationWebApi.Models
                 user.UserName.Equals(username, StringComparison.OrdinalIgnoreCase)
                 && user.Password == password);
         }
+
+        //This method is used to return the User Details
+        public static User GetUserDetails(string username, string password)
+        {
+            UserList users = new UserList();
+            return users.GetUsers().FirstOrDefault(user =>
+                user.UserName.Equals(username, StringComparison.OrdinalIgnoreCase)
+                && user.Password == password);
+        }
     }
 }

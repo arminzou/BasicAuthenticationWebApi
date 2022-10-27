@@ -9,23 +9,33 @@ namespace BasicAuthenticationWebApi.Models
     {
         public List<User> GetUsers()
         {
-            List<User> users = new List<User>();
-
-            users.Add(new User()
+            // hard-coded user list
+            List<User> userList = new List<User>();
+            userList.Add(new User()
             {
                 ID = 101,
-                UserName = "MaleUser",
-                Password = "123456"
+                UserName = "ManagerUser",
+                Password = "123456",
+                Roles = "Manager",
+                Email = "Manager@a.com"
             });
-
-            users.Add(new User()
+            userList.Add(new User()
             {
                 ID = 102,
-                UserName = "FemaleUser",
-                Password = "abcdef"
+                UserName = "BothUser",
+                Password = "abcdef",
+                Roles = "Manager,Admin",
+                Email = "BothUser@a.com"
             });
-
-            return users;
+            userList.Add(new User()
+            {
+                ID = 103,
+                UserName = "AdminUser",
+                Password = "Password@123",
+                Roles = "Admin",
+                Email = "Admin@a.com"
+            });
+            return userList;
         }
     }
 }
