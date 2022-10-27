@@ -1,4 +1,5 @@
-﻿using BasicAuthenticationWebApi.Models;
+﻿using BasicAuthenticationWebApi.MessageHandlers;
+using BasicAuthenticationWebApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,11 @@ namespace BasicAuthenticationWebApi
         {
             // Web API configuration and services
             config.Filters.Add(new BasicAuthenticationAttribute());
+            //config.MessageHandlers.Add(new CustomMessageHandler());
+            //config.MessageHandlers.Add(new CustomMessageHandler2());
+            config.MessageHandlers.Add(new XHTTPMethodOverrideHandler());
+            //config.MessageHandlers.Add(new CustomHeaderHandler());
+            //config.MessageHandlers.Add(new ApiKeyHandler("secretkey"));
 
             // Web API routes
             config.MapHttpAttributeRoutes();

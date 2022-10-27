@@ -168,6 +168,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MessageHandlers\ApiKeyHandler.cs" />
+    <Compile Include="MessageHandlers\CustomHeaderHandler.cs" />
+    <Compile Include="MessageHandlers\CustomMessageHandler2.cs" />
+    <Compile Include="MessageHandlers\XHTTPMethodOverrideHandler.cs" />
     <Compile Include="Models\BasicAuthenticationAttribute.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\EmployeeList.cs" />
