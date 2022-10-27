@@ -7,11 +7,38 @@ using System.Net.Http;
 using System.Security.Claims;
 using System.Threading;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace BasicAuthenticationWebApi.Controllers
 {
     public class EmployeeController : ApiController
     {
+        [BasicAuthentication]
+        [EnableCorsAttribute("*", "*", "*")]
+        [MyAuthorize(Roles = "Manager,Admin")]
+        [Route("api/Employees")]
+        public HttpResponseMessage GetEmployees()
+        {
+            //var identity = (ClaimsIdentity)User.Identity;
+            //var username = identity.Name;
+            //OR you can use the below code to get the login username
+            string username = Thread.CurrentPrincipal.Identity.Name;
+            var EmpList = new EmployeeList().GetEmployees();
+            switch (username.ToLower())
+            {
+                case "adminuser":
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        EmpList.Where(e => e.Gender.ToLower() == "male").ToList());
+                case "superadminuser":
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        EmpList.Where(e => e.Gender.ToLower() == "female").ToList());
+                case "bothuser":
+                    return Request.CreateResponse(HttpStatusCode.OK, EmpList);
+                default:
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+        }
+
         [BasicAuthentication]
         [MyAuthorize(Roles = "Manager")]
         [Route("api/AllMaleEmployees")]
